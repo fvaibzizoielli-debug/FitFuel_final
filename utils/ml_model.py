@@ -12,6 +12,16 @@
 # - Falls back to rule-based heuristics when insufficient
 #   data is available (cold start problem)
 # - Runs entirely locally — no external API calls
+#
+# AI assisted implementation: The overall adaptation logic — which features
+# to engineer, why a Decision Tree Regressor is the right
+# model for small user datasets, the composite progress
+# score weighting (40% workout, 35% nutrition, 25% weight),
+# and the adjustment thresholds were designed by us based
+# on our understanding of the domain. Claude assisted with
+# implementing the scikit-learn pipeline, structuring the
+# feature matrix, and translating our adjustment rules into
+# working Python code.
 # =====================================================
 
 import numpy as np
@@ -30,16 +40,16 @@ MIN_DATA_POINTS = 7
 def prepare_training_features(workout_logs: list, nutrition_logs: list,
                                 weight_logs: list, profile: dict) -> tuple:
     """
-    Transform raw log data into feature vectors for ML training.
+    Builds feature matrix for ML training. One row per day.
 
-    Each row represents one day and includes:
+    Features:
     - Workout completion rate (avg across all exercises that day)
     - Calorie adherence ratio (actual calories / target calories)
     - Protein adherence ratio
     - Carb adherence ratio
     - Fat adherence ratio
     - Weight change from previous measurement (kg)
-    - Day of week (0=Monday, 6=Sunday)
+    - Day of week (0=Monday)
     - Days since start (trend indicator)
 
     The target variable is a composite "progress score" that
@@ -223,7 +233,7 @@ def calculate_progress_score(completion: float, cal_adherence: float,
 
 def train_and_predict(features: np.ndarray, targets: np.ndarray) -> dict:
     """
-    Train a Decision Tree model and predict adjustment recommendations.
+    Trains a Decision Tree on user history and returns adjustment recommendations.
 
     We use a Decision Tree because:
     - It works well with small datasets (important for new users)
@@ -241,6 +251,8 @@ def train_and_predict(features: np.ndarray, targets: np.ndarray) -> dict:
 
     Returns:
         Dictionary with adjustment recommendations
+
+    AI assisted implementation: Claude was used to set up model training pipeline.
     """
     # Train the Decision Tree model
     model = DecisionTreeRegressor(
@@ -285,8 +297,8 @@ def train_and_predict(features: np.ndarray, targets: np.ndarray) -> dict:
 def generate_adjustments(ml_results: dict, feedback: dict,
                           profile: dict) -> dict:
     """
-    Combine ML predictions with user feedback to generate
-    specific plan adjustment recommendations.
+    Merges ML results + user feedback into concrete plan adjustments
+    (calories, macros, workout params). feedback can be empty dict.
 
     This is the brain of the adaptive system. It takes:
     1. ML analysis of workout/nutrition/weight data
@@ -313,7 +325,7 @@ def generate_adjustments(ml_results: dict, feedback: dict,
         "training_days_change": 0,      # Days to add/subtract
         "new_limitations": [],          # Any newly reported limitations
         "focus_preferences": [],        # Updated focus areas
-        "reasons": [],                  # Human-readable explanations
+        "reasons": [],                  # Readable explanations
     }
 
     # ----- Analyze workout completion -----
