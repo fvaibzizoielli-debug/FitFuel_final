@@ -11,6 +11,20 @@
 # Users see their daily exercises with prescribed sets/reps
 # and enter actual reps completed per set. This granular
 # tracking feeds into the ML model for adaptive planning.
+#
+# AI use: The design to track reps per set as an array
+# (e.g., [10, 9, 7] for three sets) rather than a single
+# total was our decision — this granularity lets the ML
+# model detect fatigue patterns across sets and is what
+# enables meaningful completion rate calculations. The
+# collapsible exercise cards that auto-expand only for
+# unlogged exercises, the optional weight tracking field
+# for strength progression charts, the color-coded rep
+# indicators (green/yellow/red vs prescribed), and the
+# plan regeneration option were all specified by us.
+# Claude assisted with implementing the dynamic Streamlit
+# form generation per exercise, the workout log database
+# writes, and the Plotly progression charts.
 # =====================================================
 
 import streamlit as st
