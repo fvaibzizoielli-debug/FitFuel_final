@@ -9,6 +9,15 @@
 
 # ----- Supabase Credentials -----
 # These connect the app to our Supabase database.
+# NOTE: We initially moved these credentials into a .env file to follow
+# secure development practices. A .env file stores sensitive information
+# (API keys, passwords) separately from the source code, and because .env
+# is listed in .gitignore, Git ignores it entirely meaning it never gets
+# pushed to GitHub, keeping credentials private. However, this approach
+# caused runtime issues on Streamlit Cloud (the app could not read the
+# variables at deployment), so we reverted to hardcoding them here.
+# In a production environment, environment variables or a secrets manager
+# should always be used instead.
 SUPABASE_URL = "https://mqmaormkwxgbixxizdbn.supabase.co"
 SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1xbWFvcm1rd3hnYml4eGl6ZGJuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUzMzY3MDksImV4cCI6MjA5MDkxMjcwOX0.kSdq2lcTzgZkU2j128bEYEljcg92_O3Phgml7RiBlsg"
 
@@ -137,7 +146,11 @@ TRAINING_SPLITS = {
 }
 
 # ----- Exercise Database -----
-# Each exercise includes:
+# AI-assisted implementation: We curated a selection of exercises from the
+# wger Workout Manager (https://wger.de), an open-source fitness platform
+# licensed under AGPL-3.0 that provides a public exercise database. Claude
+# was used to transcribe the selected exercises into the Python dictionary
+# format below and to tag each entry with the structured metadata fields below: 
 #   - muscle_group: which body part it targets
 #   - equipment: what's needed to perform it
 #   - difficulty: beginner/intermediate/advanced
