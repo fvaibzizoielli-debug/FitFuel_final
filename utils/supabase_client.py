@@ -5,6 +5,16 @@
 # read and write to Supabase goes through functions here.
 # This keeps database logic centralized and makes the
 # page code cleaner and easier to maintain.
+#
+# AI-assisted implementation: The database schema (table structure, field
+# types, relationships, and indexes) was designed by us
+# based on the app's data requirements. Claude assisted
+# with writing the CRUD functions using the Supabase
+# Python SDK syntax. The integration work — connecting
+# Supabase to the Streamlit frontend, debugging
+# authentication issues, and resolving mismatches between
+# the schema and what the application code expected —
+# was handled by us manually during deployment.
 # =====================================================
 
 from supabase import create_client, Client
