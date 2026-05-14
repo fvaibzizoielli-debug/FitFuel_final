@@ -9,6 +9,17 @@
 # 5. Recent plan adjustment history
 #
 # This page is data-visualization heavy.
+#
+# AI use: The decision to combine the dashboard and
+# progress analytics into a single page, the choice of
+# visualization types (gauge charts for daily targets,
+# line charts for trends, stacked bars for macros, color-
+# coded completion bars), and the layout priorities were
+# specified by us. Claude assisted with implementing the
+# Plotly chart rendering, configuring axis ranges, 
+# color schemes, reference lines, and the data aggregation
+# logic that groups raw database records into daily
+# summaries for plotting.
 # =====================================================
 
 import streamlit as st
