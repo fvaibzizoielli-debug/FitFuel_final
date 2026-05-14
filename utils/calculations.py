@@ -5,6 +5,14 @@
 # that form the foundation of every user's nutrition plan.
 # All calculations follow established exercise science
 # standards (Harris-Benedict equation).
+
+# AI-assisted implementation: The formulas, activity multipliers, and goal-specific
+# macro ratios were researched and validated by us using
+# sports nutrition literature. Claude assisted with
+# structuring the code into clean, documented functions
+# but the underlying science and parameter choices
+# (e.g., 15% deficit for fat loss, 35/35/30 macro split)
+# are our own informed decisions.
 # =====================================================
 
 from utils.config import (
