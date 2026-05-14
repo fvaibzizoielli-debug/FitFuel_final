@@ -6,7 +6,7 @@
 # This keeps database logic centralized and makes the
 # page code cleaner and easier to maintain.
 #
-# AI-assisted implementation: The database schema (table structure, field
+# AI use: The database schema (table structure, field
 # types, relationships, and indexes) was designed by us
 # based on the app's data requirements. Claude assisted
 # with writing the CRUD functions using the Supabase
