@@ -4,7 +4,7 @@ FitFuel is an intelligent, adaptive fitness web application that unifies **nutri
 
 Built with [Streamlit](https://streamlit.io/), [Supabase](https://supabase.com/), [scikit-learn](https://scikit-learn.org/) and [Claude Opus 4.6](https://claude.ai/login).
 
-> **Live Demo:** [fitfuel.streamlit.app](https://fitfuel-demo.streamlit.app)
+> **Live Demo:** [fitfuel.streamlit.app](https://fitfuel-finalversion.streamlit.app)
 
 ---
 
