@@ -6,6 +6,14 @@
 # based on the user's equipment, experience, physical
 # limitations, and goals — then assembles them into a
 # structured weekly split.
+# 
+# AI use: The training split design (Full Body for 3 days,
+# Upper/Lower for 4, Push/Pull/Legs for 5), the five-
+# criteria exercise filtering logic, and the volume
+# adjustment approach per experience level were specified
+# by us based on established training principles. Claude
+# assisted with implementing the filtering, selection,
+# and plan assembly functions in Python.
 # =====================================================
 
 import random
