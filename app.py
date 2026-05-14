@@ -9,6 +9,16 @@
 #
 # The app uses Streamlit's session_state to persist the
 # current user's ID across page navigations.
+#
+# AI use: The onboarding survey fields, feedback form
+# options, and the decision to use multi-select instead
+# of free text for physical limitations were our design
+# choices. The UI layout, page structure, and the flow
+# from onboarding through to plan generation were
+# specified by us. Claude assisted with implementing the
+# Streamlit form components, session state management,
+# and wiring the form submissions to the Supabase
+# database and calculation pipeline.
 # =====================================================
 
 import streamlit as st
