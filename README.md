@@ -43,6 +43,20 @@ Users can submit weekly feedback surveys indicating workout difficulty, nutritio
 
 ---
 
+## AI Transparency
+
+The idea behind FitFuel is entirely our own — we wanted to build something that genuinely doesn't exist on the market: a single app that connects macro-calibrated nutrition tracking with adaptive workout planning in a meaningful, data-driven way. That concept, the problem identification, the feature set, and the overall product vision came from us, not from AI.
+
+That said, we are finance students, not software engineers. We used Claude 4.6 (Anthropic) as a coding partner throughout development to help translate our vision into working Python code. We want to be transparent about that because we think it reflects how modern software is increasingly built — AI as a tool in the hands of someone who knows what they want to create but is still building their technical skillset.
+
+What's important to understand is what AI did and didn't do in this project. Claude helped us write syntactically correct code, structure files, and implement specific functions. But it couldn't make the decisions that actually shaped the app. We validated that the Harris-Benedict equation and TDEE multipliers used in the nutrition engine are grounded in established exercise science. We researched and selected the macro ratios per goal based on sports nutrition literature. We attempted to move all API credentials into a `.env` file with `.gitignore` exclusion to follow secure development practices — the implementation caused runtime issues on Streamlit Cloud, so we reverted, but the effort reflects our understanding that credentials should not live in source code in a production environment.
+
+Most critically, we handled the integration work ourselves. AI can generate individual functions, but connecting Supabase to the Streamlit frontend, debugging authentication flows, ensuring data written during onboarding is correctly read by the dashboard and workout pages, resolving schema mismatches between what the code expects and what the database returns — that end-to-end wiring is something we worked through manually, and it deepened our understanding of how a full-stack application actually fits together.
+
+Sections of the codebase where AI contributed to the implementation are marked with inline comments indicating AI involvement. The overall architecture, feature priorities, UX decisions, and domain-specific validation remain ours.
+
+---
+
 ## Tech Stack
 
 | Layer | Technology | Purpose |
@@ -110,39 +124,6 @@ The adaptive system uses a **Decision Tree Regressor** trained on 8 engineered f
 The target variable is a composite **progress score** (0.0–1.0) that weighs workout performance (40%), nutrition adherence (35%), and goal-aligned weight trajectory (25%). The model is trained with controlled hyperparameters (`max_depth=4`, `min_samples_split=3`) to prevent overfitting on small datasets.
 
 Feature importances from the trained model are used to determine which aspects of the user's behavior most impact their progress, enabling targeted recommendations.
-
----
-
-## Installation & Local Development
-
-### Prerequisites
-- Python 3.9+
-- A Supabase project (free tier works)
-
-### Setup
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/fvaibzizoielli-debug/fitfuel.git
-   cd fitfuel
-   ```
-
-2. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Set up Supabase:**
-   - Create a project at [supabase.com](https://supabase.com)
-   - Run the SQL schema (provided during development) in the SQL Editor
-   - Update `SUPABASE_URL` and `SUPABASE_KEY` in `utils/config.py`
-
-4. **Run the app:**
-   ```bash
-   streamlit run app.py
-   ```
-
-The app will open at `http://localhost:8501`.
 
 ---
 
