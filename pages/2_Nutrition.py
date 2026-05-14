@@ -9,6 +9,20 @@
 #
 # The photo upload stores images as base64 data URLs
 # in Supabase.
+#
+# AI use: The meal logging structure (separating meals
+# by type: breakfast, lunch, dinner, snack), the choice
+# to include photo uploads as a visual food diary rather
+# than attempting AI-based food recognition (which would
+# require an external API and violate criterion 5), the
+# progress bar layout showing remaining macros at a
+# glance, and the donut chart for macro calorie split
+# were our design decisions. We also chose to include a
+# delete button per meal so users can correct mistakes
+# without re-entering everything. Claude assisted with
+# implementing the Streamlit form handling, base64 photo
+# encoding for Supabase storage, the daily aggregation
+# logic, and the Plotly pie chart configuration.
 # =====================================================
 
 import streamlit as st
