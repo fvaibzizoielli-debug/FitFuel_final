@@ -146,11 +146,11 @@ TRAINING_SPLITS = {
 }
 
 # ----- Exercise Database -----
-# AI-assisted implementation: We curated a selection of exercises from the
-# wger Workout Manager (https://wger.de), an open-source fitness platform
-# licensed under AGPL-3.0 that provides a public exercise database. Claude
-# was used to transcribe the selected exercises into the Python dictionary
-# format below and to tag each entry with the structured metadata fields below: 
+# AI-use: We curated a selection of exercises from the wger Workout Manager
+# (https://wger.de), an open-source fitness platform licensed under AGPL-3.0
+# that provides a public exercise database. Claude was used to transcribe the 
+# selected exercises into the Python dictionary format below and to tag each entry
+# with the structured metadata fields below: 
 #   - muscle_group: which body part it targets
 #   - equipment: what's needed to perform it
 #   - difficulty: beginner/intermediate/advanced
