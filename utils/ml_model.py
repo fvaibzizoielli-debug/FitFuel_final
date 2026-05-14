@@ -13,7 +13,7 @@
 #   data is available (cold start problem)
 # - Runs entirely locally — no external API calls
 #
-# AI assisted implementation: The overall adaptation logic — which features
+# AI use: The overall adaptation logic — which features
 # to engineer, why a Decision Tree Regressor is the right
 # model for small user datasets, the composite progress
 # score weighting (40% workout, 35% nutrition, 25% weight),
